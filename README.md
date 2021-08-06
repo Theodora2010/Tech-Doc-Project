@@ -1,2 +1,2 @@
-# Tech-Doc-Project
+# Documentation-Project
 Technical Documentation Project about JavaScript Basics
