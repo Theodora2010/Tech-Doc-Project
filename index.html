@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<head>
+    <script defer src='https://use.fontawesome.com/releases/v5.0.6/js/all.js'></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+
+</head>
+
+<style>
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+        body .content {
+            background: linear-gradient(135deg, #8fbff0, #de9ff9 );
+        }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 25%;
+       
+    }
+
+    .subtitle {
+    }
+
+    header {
+        display: block;
+        justify-content: center;
+        margin-top:20px;
+        text-indent: 100px;
+        text-shadow: 1px 2px 1px #898a8b;
+        font-size: 1.5em;
+        font-weight:bold;
+    }
+
+    p {
+        text-indent: 40px;
+        font-size: 18px;
+        text-align: justify;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #000;
+    }
+
+    hr {
+        box-shadow: rgba(0,0,0,0.4) 2px 2px;
+    }
+
+    .menu {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: space-between;
+        align-content: flex-start;
+        overflow: hidden;
+        position: fixed;
+        width: 25%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border-right: 2px solid #312924;
+    }
+
+        .menu ul {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-between;
+            align-content: flex-start;
+            list-style-type: none;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #de9ff9;
+        }
+
+            .menu ul li {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+
+                .menu ul li a {
+                    text-decoration: none;
+                    color: #000;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    padding-top: 15px;
+                    font-size: 20px;
+                    text-align: center;
+                    font-weight: bold;
+                }
+
+        .menu li a:hover {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: #8a41aa;
+        }
+
+    .title {
+        display: block;
+        padding: 12px;
+        width:100%;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+        background-color: #8a41aa;
+    }
+
+    .responsive-menu {
+        display: none;
+    }
+
+    label[for="icon"] {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        color: black;
+        z-index: 100;
+    }
+
+    #icon {
+        display: none;
+    }
+
+        #icon:hover {
+            color: #bd4646;
+        }
+
+    svg.hamburger {
+        display: none;
+    }
+
+    .code-box {
+        display: block;
+        margin: 40px;
+        border-left: 5px solid #c82c16;
+        background-color: #fadfd1;
+        padding: 10px;
+        
+    }
+
+    .note {
+        display: block;
+        margin: 40px;
+        border-left: 5px solid #c82c16;
+        background-color: #ff9966;
+        padding: 10px;
+    }
+
+    table {
+        border: 1px solid #000;
+        max-width: 100%;
+        border-collapse: collapse;
+    }
+
+    .row {
+        background-color: #ff9966;
+        border: 1px solid #000;
+    }
+
+    .rest {
+        background-color: #fadfd1;
+        border: 1px solid #000;
+        font-weight: 100;
+    }
+
+    img {
+        max-width:100%;
+    }
+
+
+    @media (max-width: 800px) {
+        .content {
+            overflow: visible;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        svg.hamburger {
+            display: block;
+        }
+
+        .responsive-menu {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-between;
+            align-content: flex-start;
+            width: 25%;
+            height: 100%;
+            background: linear-gradient(to top, #be93c5, #7bc6cc);
+            position: fixed;
+            top: -100vh;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 0;
+            z-index: 6;
+            transition: top 1s;
+        }
+
+            .responsive-menu ul {
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                justify-content: space-between;
+                align-content: flex-start;
+                list-style-type: none;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background-color: #de9ff9;
+            }
+
+                .responsive-menu ul li {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            .responsive-menu li a {
+                text-decoration: none;
+                color: #000;
+                display: block;
+                width: 100%;
+                height: 100%;
+                padding-top: 15px;
+                font-size: 20px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .responsive-menu ul li a:hover {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: #472854;
+            }
+
+        #icon:checked ~ .responsive-menu {
+            top: 0vh;
+        }
+
+        .content {
+            margin-left: 0;
+        }
+
+        .main-section {
+            margin:20px;
+        }
+
+        p, h3, table {
+            margin-left: 25px;
+        }
+    }
+
+    footer {
+        display: block;
+        margin-left: 63%;
+        margin-right: auto;
+        margin-top: auto;
+        width: fit-content;
+        background: linear-gradient(135deg, #8fbff0, #de9ff9 );
+    }
+</style>
+
+<body>
+    <label for="icon">
+        <i class="fa fa-bars hamburger fa-2x"></i>
+    </label>
+    <nav class="menu" id="navbar">
+        <header class="title" style="text-indent:0; margin-top:0;">
+            Javascript Basics
+        </header>
+        <ul>
+
+            <li>
+                <a class="nav-link" href="#What_is_JavaScript?">What is JavaScript?</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Introduction">Introduction</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Variables">Variables</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Operators">Operators</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Conditionals">Conditionals</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Functions">Functions</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Events">Events</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Supercharging">Supercharging</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#Conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </nav>
+    <input type="checkbox" id="icon" name="icon">
+    <nav class="responsive-menu">
+        <ul>
+            <li class="title" style=" font-size: 25px; text-indent: 30px;">
+                Javascript Basics
+            </li>
+            <li>
+                <a href="#WhatIsJS">What is JS</a>
+            </li>
+            <li>
+                <a href="#Introduction">Introduction</a>
+            </li>
+            <li>
+                <a href="#Variables">Variables</a>
+            </li>
+            <li>
+                <a href="#Operators">Operators</a>
+            </li>
+            <li>
+                <a href="#Conditionals">Conditionals</a>
+            </li>
+            <li>
+                <a href="#Functions">Functions</a>
+            </li>
+            <li>
+                <a href="#Events">Events</a>
+            </li>
+            <li>
+                <a href="#image-changer">Adding an image changer</a>
+            </li>
+            <li>
+                <a href="#Welcome">Adding a personalized welcome message</a>
+            </li>
+            <li>
+                <a href="#conclusion">Conclusion</a>
+            </li>
+        </ul>
+    </nav>
+    <main class="content" id="main-doc" >
+        <div style="margin-left: 3%; margin-right:2%">
+                <section class="main-section" id="What_is_JavaScript?">
+                    <header>What is JavaScript?</header>
+                    <hr />
+                    <p>
+                        <a href="https://developer.mozilla.org/en-US/docs/Glossary/JavaScript">JavaScript</a> ("JS" for short) is a full-fledged dynamic programming language that can add interactivity to a website. It was invented by Brendan Eich (co-founder of the Mozilla project, the Mozilla Foundation, and the Mozilla Corporation).
+                    </p>
+                    <p>
+                        JavaScript is versatile and beginner-friendly. With more experience, you'll be able to create games, animated 2D and 3D graphics, comprehensive database-driven apps, and much more!
+                    </p>
+
+                </section>
+                <section class="main-section" id="Introduction">
+                    <header>Introduction</header>
+                    <hr />
+                    <p>
+                        JavaScript is one of the most popular modern web technologies! As your JavaScript skills grow, your websites will enter a new dimension of power and creativity.
+                    </p>
+                    <p>
+                        However, getting comfortable with JavaScript is more challenging than getting comfortable with HTML and CSS. You may have to start small, and progress gradually. To begin, let's examine how to add JavaScript to your page for creating a <em>Hello world!</em> example.
+                    </p>
+                    <ol>
+                        <li>
+                            <p>Go to your test site and create a new folder named <code>scripts</code>. Within the scripts folder, create a new file called <code>main.js</code>, and save it.</p>
+                        </li>
+                        <li>
+                            <p>
+                                In your <code>index.html</code> file, enter this code on a new line, just before the closing <code>&lt;&sol;body&gt;</code> tag:
+                            </p>
+                            <div class="code-box prettyprint">
+                                <p><pre><code>&lt;script src="scripts/main.js"&gt;&lt;&sol;script&gt;</code></pre></p>
+                            </div>
+                        </li>
+                        <li>
+                            <p>This is doing the same job as the <code>&lt;link&gt;</code> element for CSS. It applies the JavaScript to the page, so it can have an effect on the HTML (along with the CSS, and anything else on the page).</p>
+                        </li>
+                        <li>
+                            <p>
+                                Add this code to the <code>main.js</code> file:
+                            </p>
+                            <div class="code-box prettyprint">
+                                <pre><code>
+const myHeading = document.querySelector('h1');
+myHeading.textContent = 'Hello world!';
+</code></pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>
+                                Make sure the HTML and JavaScript files are saved. Then load <code>index.html</code> in your browser. You should see something like this:
+                            </p>
+                            <img src="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics/hello-world.png" alt="" />
+                        </li>
+                    </ol>
+                </section>
+                <section class="main-section" id="Variables">
+                    <header>Variables</header>
+                    <hr />
+                    <p>
+                        Variables are necessary to do anything interesting in programming. If values couldn't change, then you couldn't do anything dynamic, like personalize a greeting message or change an image displayed in an image gallery.
+                    </p>
+                    <p>
+                        <a href="https://developer.mozilla.org/en-US/docs/Glossary/Variable">Variables</a> are containers that store values. You start by declaring a variable with the <code>var</code> (less recommended, dive deeper for the explanation) or the <code>let</code> keyword, followed by the name you give to the variable:
+                    </p>
+
+                    <div class="code-box prettyprint">
+                        <code>let myVariable;</code>
+                    </div>
+                    <div class="note">
+                        <p>A semicolon at the end of a line indicates where a statement ends. It is only required when you need to separate statements on a single line. However, some people believe it's good practice to have semicolons at the end of each statement.</p>
+                    </div>
+                    <div class="note">
+                        <p>JavaScript is case sensitive. This means <code>myVariable</code> is not the same as <code>myvariable</code>. If you have problems in your code, check the case!</p>
+                    </div>
+                    <p>After declaring a variable, you can give it a value:</p>
+                    <div class="code-box prettyprint">
+                        <code>myVariable = 'Bob';</code>
+                    </div>
+                    <p>
+                        Also, you can do both these operations on the same line:
+                    </p>
+                    <div class="code-box prettyprint">
+                        <code>let myVariable = 'Bob';</code>
+                    </div>
+                    <p>
+                        You retrieve the value by calling the variable name:
+                    </p>
+                    <div class="code-box prettyprint">
+                        <code>myVariable;</code>
+                    </div>
+                    <p>
+                        After assigning a value to a variable, you can change it later in the code:
+                    </p>
+                    <div class="code-box prettyprint">
+                        <pre><code>
+let myVariable = 'Bob';
+myVariable = 'Steve';
+</code></pre>
+                    </div>
+                    <p>
+                        Note that variables may hold values that have different <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">data types</a> :
+                    </p>
+                </section>
+                <section class="main-section" id="Operators">
+                    <header>Operators</header>
+                    <hr />
+                    <p>
+                        An <a href="https://developer.mozilla.org/en-US/docs/Glossary/Operator">operator</a> is a mathematical symbol that produces a result based on two values (or variables). In the following table, you can see some of the simplest operators, along with some examples to try in the JavaScript console.
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="row">Operator</th>
+                                <th class="row">Explanation</th>
+                                <th class="row">Symbol</th>
+                            </tr>
+                            <tr>
+                                <th class="row">Addition</th>
+                                <th class="rest">Add two numbers together or combine two strings</th>
+                                <th class="rest">+</th>
+                            </tr>
+                            <tr>
+                                <th class="row">Subtraction, Multiplication, Division</th>
+                                <th class="rest">Like basic math</th>
+                                <th class="rest">-, *, /</th>
+                            </tr>
+                            <tr>
+                                <th class="row">Assignment</th>
+                                <th class="rest">This assigns a value to a variable.</th>
+                                <th class="rest">=</th>
+                            </tr>
+                            <tr>
+                                <th class="row">Equality</th>
+                                <th class="rest">This performs a test to see if two values are equal. It returns a true/false (Boolean) result.</th>
+                                <th class="rest">===</th>
+                            </tr>
+                            <tr>
+                                <th class="row">Not, Does-not-equal</th>
+                                <th class="rest">This returns the logically opposite value of what it precedes.</th>
+                                <th class="rest">!, !==</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </section>
+                <section class="main-section" id="Conditionals">
+                    <header>Conditionals</header>
+                    <hr />
+                    <p>
+                        Conditionals are code structures used to test if an expression returns true or not. A very common form of conditionals is the <code>if ... else statement</code>. For example:
+                    </p>
+                    <div class="code-box prettyprint">
+                        <pre><code>
+    let iceCream = 'chocolate';
+    if(iceCream === 'chocolate') {
+    alert('Yay, I love chocolate ice cream!');
+    } else {
+    alert('Awwww, but chocolate is my favorite...');
+    }
+</code></pre>
+                    </div>
+                    <p>
+                        The expression inside the <code>if( ... )</code> is the test. This uses the identity operator (as described above) to compare the variable <code>iceCream</code> with the string <code>chocolate</code> to see if the two are equal. If this comparison returns <code>true</code>, the first block of code runs. If the comparison is not true, the second block of code—after the <code>else</code> statement—runs instead.
+                    </p>
+                </section>
+                <section class="main-section" id="Functions">
+                    <header>Functions</header>
+                    <hr />
+                    <p>
+                        <a href="https://developer.mozilla.org/en-US/docs/Glossary/Function">Functions</a> are a way of packaging functionality that you wish to reuse. It's possible to define a body of code as a function that executes when you call the function name in your code. This is a good alternative to repeatedly writing the same code. You have already seen some uses of functions previously. For example:
+                    </p>
+                    <ol>
+                        <li>
+                            <div class="code-box prettyprint">
+                                <code>
+                                    let myVariable = document.querySelector('h1');
+                                </code>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="code-box prettyprint">
+                                <code>
+                                    alert('hello!');
+                                </code>
+                            </div>
+                        </li>
+                    </ol>
+                    <p>These functions, <code>document.querySelector</code> and <code>alert</code>, are built into the browser.</p>
+                    <p>
+                        If you see something which looks like a variable name, but it's followed by parentheses— () —it is likely a function. Functions often take arguments: bits of data they need to do their job. Arguments go inside the parentheses, separated by commas if there is more than one argument.
+                    </p>
+                    <p>
+                        For example, the <code>alert()</code> function makes a pop-up box appear inside the browser window, but we need to give it a string as an argument to tell the function what message to display.
+                    </p>
+                    <p>
+                        You can also define your own functions. In the next example, we create a simple function which takes two numbers as arguments and multiplies them:
+                    </p>
+                    <div class="code-box prettyprint">
+                        <pre><code>
+    function multiply(num1,num2) {
+    let result = num1 * num2;
+    return result;
+    }
+</code></pre>
+                    </div>
+                    <p>Try running this in the console; then test with several arguments. For example:</p>
+                    <div class="code-box prettyprint">
+                        <pre><code>
+    multiply(4, 7);
+    multiply(20, 20);
+    multiply(0.5, 3);
+</code></pre>
+                    </div>
+                    <div class="note">
+                        <p>
+                            The  <code>return </code>statement tells the browser to return the <code>result</code> variable out of the function so it is available to use. This is necessary because variables defined inside functions are only available inside those functions. This is called variable <a href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">scoping</a>.
+                        </p>
+                    </div>
+                </section>
+                <section class="main-section" id="Events">
+                    <header>Events</header>
+                    <hr />
+                    <p>
+                        Real interactivity on a website requires event handlers. These are code structures that listen for activity in the browser, and run code in response. The most obvious example is handling the click event, which is fired by the browser when you click on something with your mouse. To demonstrate this, enter the following into your console, then click on the current webpage:
+                    </p>
+                    <div class="code-box prettyprint">
+                        <pre><code>
+    document.querySelector('html').onclick = function() {
+    alert('Ouch! Stop poking me!');
+    }
+</code></pre>
+                    </div>
+                    <p>
+                        There are many ways to attach an event handler to an element. Here we select the &lt;html&gt;
+                        element, setting its <code>onclick</code> handler property equal to an anonymous (i.e. nameless) function, which contains the code we want the click event to run.
+                    </p>
+                    <p>Note that</p>
+                    <div class="code-box prettyprint">
+                        <pre><code>
+    document.querySelector('html').onclick = function() {};
+</code></pre>
+                    </div>
+                    <p>is equivalent to</p>
+                    <div class="code-box prettyprint">
+                        <pre><code>
+    let myHTML = document.querySelector('html');
+    myHTML.onclick = function() {};
+</code></pre>
+                    </div>
+                </section>
+                <section class="main-section" id="Supercharging">
+                    <header>Supercharging</header>
+                    <hr />
+                    <p>
+                        With this review of JavaScript basics completed (above), let's add some new features to our example site.
+                    </p>
+                    <p>
+                        Before going any further, delete the current contents of your <code>main.js</code> file — the bit you added earlier during the "Hello world!" example — and save the empty file. If you don't, the existing code will clash with the new code you are about to add.
+                    </p>
+                    <h3 id="image-changer">Adding an image changer</h3>
+                    <p>
+                        In this section, you will learn how to use JavaScript and DOM API features to alternate the display of one of two images. This change will happen as a user clicks the displayed image.
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                Choose an image you want to feature on your example site. Ideally, the image will be the same size as the image you added previously, or as close as possible.
+                            </p>
+                        </li>
+                        <li>
+                            <p>Save this image in your <code>images</code> folder.</p>
+                        </li>
+                        <li>
+                            Rename the image <code>firefox2.png</code>.
+                        </li>
+                        <li>
+                            <p>
+                                Add the JavaScript below to your <code>main.js</code> file.
+                            </p>
+                            <div class="code-box prettyprint">
+                                <pre><code>
+    let myImage = document.querySelector('img');
+
+    myImage.onclick = function() {
+    let mySrc = myImage.getAttribute('src');
+    if(mySrc === 'images/firefox-icon.png') {
+    myImage.setAttribute('src','images/firefox2.png');
+    } else {
+    myImage.setAttribute('src','images/firefox-icon.png');
+    }
+    }
+</code></pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>
+                                Save all files and load <code>index.html</code> in the browser. Now when you click the image, it should change to the other one.
+                            </p>
+                        </li>
+                    </ol>
+                    <p>
+                        This is what happened. You stored a reference to your <code>&lt;img&gt;</code> element in the <code>myImage</code> variable. Next, you made this variable's <code>onclick</code> event handler property equal to a function with no name (an "anonymous" function). So every time this element is clicked:
+                    </p>
+                    <ol>
+                        <li>
+                            The code retrieves the value of the image's <code>src</code> attribute.
+                        </li>
+                        <li>
+                            The code uses a conditional to check if the <code>src</code> value is equal to the path of the original image:
+                            <ol>
+                                <li>
+                                    If it is, the code changes the <code>src</code> value to the path of the second image, forcing the other image to be loaded inside the <code>&lt;img&gt;</code> element.
+                                </li>
+                                <li>
+                                    If it isn't (meaning it must already have changed), the <code>src</code> value swaps back to the original image path, to the original state.
+                                </li>
+                            </ol>
+                        </li>
+                    </ol>
+                    <h3 id="Welcome">Adding a personalized welcome message</h3>
+                    <p>
+                        Next, let's change the page title to a personalized welcome message when the user first visits the site. This welcome message will persist. Should the user leave the site and return later, we will save the message using the Web Storage API. We will also include an option to change the user, and therefore, the welcome message.
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                In <code>index.html</code>, add the following line just before the <code>&lt;script&gt;</code> element:
+                            </p>
+                            <div class="code-box prettyprint">
+                                <pre><code>
+    &lt;button&gt;Change user&lt;&sol;button&gt;
+</code></pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>
+                                In <code>main.js</code>, place the following code at the bottom of the file, exactly as it is written. This takes references to the new button and the heading, storing each inside variables:
+                            </p>
+                            <div class="code-box prettyprint">
+                                <pre><code>
+    let myButton = document.querySelector('button');
+    let myHeading = document.querySelector('h1');
+</code></pre>
+                            </div>
+                        </li>
+                        <li>
+                            <p>
+                                Add the function below to set the personalized greeting. This won't do anything yet, but this will change soon.
+                            </p>
+                            <div class="code-box prettyprint">
+                                <pre><code>
+    function setUserName() {
+    let myName = prompt('Please enter your name.');
+    localStorage.setItem('name', myName);
+    myHeading.textContent = 'Mozilla is cool, ' + myName;
+    }
+</code></pre>
+                            </div>
+                            <p>
+                                This first line of this block uses the negation operator (logical NOT, represented by the <code>!</code>) to check whether the <code>name</code> data exists. If not, the <code>setUserName()</code> function runs to create it. If it exists (that is, the user set a user name during a previous visit), we retrieve the stored name using <code>getItem()</code> and set the <code>textContent</code> of the heading to a string, plus the user's name, as we did inside <code>setUserName()</code>.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Put this <code>onclick</code> event handler (below) on the button. When clicked, <code>setUserName()</code> runs. This allows the user to enter a different name by pressing the button.
+                            </p>
+                            <div class="code-box prettyprint">
+                                <pre><code>
+    myButton.onclick = function() {
+    setUserName();
+    }
+</code></pre>
+                            </div>
+                        </li>
+                    </ol>
+                </section>
+                <section class="main-section" id="Conclusion">
+                    <header id="Conclusion">Conclusion</header>
+                    <p>
+                        We have just scratched the surface of JavaScript. If you enjoyed playing, and wish to go further, take advantage of the resources listed below.
+                    </p>
+                    <h4>
+                        <a href="https://learnjavascript.online/">
+                            Learn JavaScript
+                        </a>
+                    </h4>
+                    <p>
+                        This is an excellent resource for aspiring web developers! Learn JavaScript in an interactive environment, with short lessons and interactive tests, guided by an automated assessment. The first 40 lessons are free. The complete course is available for a small one-time payment.
+                    </p>
+                </section>
+            <div style="margin-left: auto; margin-right:auto;">
+                <hr />
+                <div style="display:flex; margin-top:15px; margin-bottom:15px; justify-content: center;">
+                    <em>&copy; Copyright 2021 Chivu Theodora</em>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    
+</body>
+
+<footer >
+</footer>
